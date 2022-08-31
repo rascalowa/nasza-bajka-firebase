@@ -1,4 +1,14 @@
-ul {
+mat-toolbar {
+  background: #055912;
+  color: #F0F0F0;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: row;
+}
+
+li {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -6,7 +16,11 @@ ul {
 
 a {
   text-decoration: none;
-  color: white;
+  color: #F0F0F0;
+}
+
+a:hover {
+  color:  #ADAB10;
 }
 
 .spacer {

@@ -1,9 +1,19 @@
-<mat-toolbar color="primary">
-  <span><a routerLink="/" routerLinkActive="mat-accent">My App</a></span>
+<mat-toolbar>
+  <span>
+    <a routerLink="/" routerLinkActive="mat-accent">Nasza Bajka</a></span>
   <span class="spacer"></span>
-  <ul>
+  <div class="nav-links">
+    <li>
+      <a mat-button routerLink="/oferta" routerLinkActive="mat-accent">Oferta</a>
+    </li>
+    <li>
+      <a mat-button routerLink="/mieszkancy" routerLinkActive="mat-accent">Mieszkańcy</a>
+    </li>
+    <li>
+      <a mat-button routerLink="/kontakt" routerLinkActive="mat-accent">Kontakt</a>
+    </li>
     <li>
       <a mat-button routerLink="/szefowa" routerLinkActive="mat-accent">Szefowa</a>
     </li>
-  </ul>
+  </div>
 </mat-toolbar>
