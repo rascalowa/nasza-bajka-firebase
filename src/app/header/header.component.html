@@ -1,19 +1,24 @@
 <mat-toolbar>
-  <span>
-    <a routerLink="/" routerLinkActive="mat-accent">Nasza Bajka</a></span>
-  <span class="spacer"></span>
+  <div class="navbar-brand">
+    <a class="navbar-logo" href="#">
+      <img [src]="logoWhitePath" height="50px">
+    </a>
+    <a class="navbar-logo" href="#">
+      <img [src]="titleWhitePath" height="50px">
+    </a>
+  </div>
   <div class="nav-links">
     <li>
-      <a mat-button routerLink="/oferta" routerLinkActive="mat-accent">Oferta</a>
+      <a mat-button routerLink="/about" routerLinkActive="mat-accent">O nas</a>
     </li>
     <li>
-      <a mat-button routerLink="/mieszkancy" routerLinkActive="mat-accent">Mieszkańcy</a>
+      <a mat-button routerLink="/offer" routerLinkActive="mat-accent">Oferta</a>
     </li>
     <li>
-      <a mat-button routerLink="/kontakt" routerLinkActive="mat-accent">Kontakt</a>
+      <a mat-button routerLink="/animals" routerLinkActive="mat-accent">Mieszkańcy</a>
     </li>
     <li>
-      <a mat-button routerLink="/szefowa" routerLinkActive="mat-accent">Szefowa</a>
+      <a mat-button routerLink="/contact" routerLinkActive="mat-accent">Kontakt</a>
     </li>
   </div>
 </mat-toolbar>

@@ -1,11 +1,31 @@
 mat-toolbar {
-  background: #055912;
+  background: #03500f;
   color: #F0F0F0;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  max-height: 4rem;
+}
+
+.navbar-brand {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-logo {
+  padding-top: 10px;
+}
+
+.navbar-title {
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 20x;
+  color: #F0F0F0;
+  align-self: center;
 }
 
 .nav-links {
   display: flex;
-  flex-direction: row;
 }
 
 li {
@@ -16,6 +36,7 @@ li {
 
 a {
   text-decoration: none;
+  font-weight: 400;
   color: #F0F0F0;
 }
 
@@ -25,4 +46,13 @@ a:hover {
 
 .spacer {
   flex: 1 1 auto;
+}
+
+.mat-button {
+  font-size: medium;
+}
+
+.mat-button.mat-accent {
+  color: #b8ac0c;
+  font-weight: 500;
 }

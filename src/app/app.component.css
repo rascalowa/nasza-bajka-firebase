@@ -1,4 +1,7 @@
 main {
   width: 80%;
   margin: 1rem auto;
+  background-color: rgb(248, 250, 199);
+  justify-content: center;
+  display: flex;
 }
