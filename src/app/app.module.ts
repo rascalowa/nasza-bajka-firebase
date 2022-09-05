@@ -10,12 +10,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { PostsModule } from './posts/posts.module';
 import { ConfigService } from './infrastructure/service/config.service';
+import { SizeDetectorComponent } from './infrastructure/size-detect/size-detect.component';
+import { ResizeService } from './resize.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PrependBaseUrlPipe
+    PrependBaseUrlPipe,
+    SizeDetectorComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,7 @@ import { ConfigService } from './infrastructure/service/config.service';
     AngularMaterialModule,
     PostsModule,
   ],
-  providers: [ConfigService],
+  providers: [ConfigService, ResizeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
