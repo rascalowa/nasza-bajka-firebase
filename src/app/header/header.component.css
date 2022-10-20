@@ -1,5 +1,5 @@
 mat-toolbar {
-  background: #03500f;
+  background: #1c4e2a;
   color: #F0F0F0;
   display: flex;
   justify-content: space-between;
@@ -41,7 +41,7 @@ a {
 }
 
 a:hover {
-  color:  #ADAB10;
+  color:  #cb9734;
 }
 
 .spacer {

@@ -26,7 +26,7 @@ import { ResizeService } from './resize.service';
     HttpClientModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    PostsModule,
+    PostsModule
   ],
   providers: [ConfigService, ResizeService],
   bootstrap: [AppComponent]
