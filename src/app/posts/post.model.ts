@@ -1,7 +1,7 @@
 export interface Post {
-  id: string;
-  title: string;
-  content: string;
+  id: number;
+  name: string;
+  owner: string;
   imagePath?: string;
 }
 

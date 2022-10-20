@@ -12,8 +12,8 @@ import { mimeType } from "./mime-type.validator";
   styleUrls: ["./post-create.component.css"]
 })
 export class PostCreateComponent implements OnInit {
-  enteredTitle = "";
-  enteredContent = "";
+  enteredname = "";
+  enteredowner = "";
   post: Post;
   isLoading = false;
   form: FormGroup;
@@ -28,10 +28,10 @@ export class PostCreateComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      title: new FormControl(null, {
+      name: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
       }),
-      content: new FormControl(null, {
+      owner: new FormControl(null, {
         validators: [Validators.required]
       }),
       image: new FormControl(null, {
@@ -44,15 +44,16 @@ export class PostCreateComponent implements OnInit {
         this.mode = "edit";
         this.postId = paramMap.get("postId");
         this.isLoading = true;
-        this.postsService.getPost(this.postId).subscribe(postData => {
-          this.isLoading = false;
-          this.post = {id: postData._id, title: postData.title, content: postData.content, imagePath: postData.imagePath };
-          this.form.setValue({
-            title: this.post.title,
-            content: this.post.content,
-            image: this.post.imagePath
-          });
-        });
+        // this.postsService.getPost(this.postId).subscribe(postData => {
+        //   this.isLoading = false;
+        //   this.post = {id: postData.id, name: postData.name, owner: postData.owner, imagePath: postData.imagePath };
+        //   this.form.setValue({
+        //     name: this.post.name,
+        //     owner: this.post.owner,
+        //     image: this.post.imagePath
+        //   });
+        // });
+        console.log('COMMENTED')
       } else {
         this.mode = "create";
         this.postId = null;
@@ -78,17 +79,18 @@ export class PostCreateComponent implements OnInit {
     this.isLoading = true;
     if (this.mode === "create") {
       this.postsService.addPost(
-        this.form.value.title,
-        this.form.value.content,
+        this.form.value.name,
+        this.form.value.owner,
         this.form.value.image
         );
     } else {
-      this.postsService.updatePost(
-        this.postId,
-        this.form.value.title,
-        this.form.value.content,
-        this.form.value.image
-      );
+      // this.postsService.updatePost(
+      //   this.postId,
+      //   this.form.value.name,
+      //   this.form.value.owner,
+      //   this.form.value.image
+      // );
+      console.log('COMMENTED')
     }
     this.form.reset();
   }

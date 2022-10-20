@@ -3,7 +3,7 @@ import { environment } from "../../../environments/environment";
 
 @Injectable()
 export class ConfigService {
-  apiUrl = environment.apiUrl;
+  apiUrl = 'environment.apiUrl';
 
   getData() {
     console.log(this.apiUrl)

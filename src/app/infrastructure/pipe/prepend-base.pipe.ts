@@ -13,12 +13,6 @@ export class PrependBaseUrlPipe implements PipeTransform {
   }
 
   transform(path: string): string {
-    console.log('transform')
-    console.log(this.baseUrl)
-    // if (path && absolutePathRegExp.test(path)) {
-    //   return path;
-    // }
-
     return path ? this.baseUrl + path : this.baseUrl;
   }
 }

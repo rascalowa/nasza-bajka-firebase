@@ -2,10 +2,10 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:3000/api'
-};
+// export const environment = {
+//   production: false,
+//   apiUrl: 'http://localhost:3000/api'
+// };
 
 /*
  * For easier debugging in development mode, you can import the following file
@@ -15,3 +15,16 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+
+export const environment = {
+  production: false,
+  firebaseConfig: {
+  apiKey: "AIzaSyAP6iTWi9GMUbKIDnZ-259ruH_3oDCR7jU",
+  authDomain: "nasza-bajka.firebaseapp.com",
+  projectId: "nasza-bajka",
+  storageBucket:  "nasza-bajka.appspot.com",
+  messagingSenderId:  "139241223404",
+  appId:  "1:139241223404:web:48bd9d984b89661829a1c9",
+  measurementId: "G-SSPX6MNLBJ"
+  }
+ };
