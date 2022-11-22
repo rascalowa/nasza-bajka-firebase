@@ -87,7 +87,7 @@ export class PostCreateComponent implements OnInit {
       // );
       console.log('TO BE UPDATED')
     }
-    this.postCreateForm.reset();
+    // this.postCreateForm.reset();
   }
 
   saveImageToStorage(postID: string, form) {
@@ -105,14 +105,12 @@ export class PostCreateComponent implements OnInit {
   }
 
   saveImageDetails(postID, form) {
-    console.log(form.image);
-
     this.dbService.addNewHorse(
       postID,
       form.name,
       form.owner,
       form.since,
-      form.image
+      this.postCreateForm['image']
       );
   }
 

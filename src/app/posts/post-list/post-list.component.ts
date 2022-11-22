@@ -21,7 +21,7 @@ export class PostListComponent implements OnInit {
     this.isLoading = true;
     this.getHorses();
     this.allPhotos = this.dbService.getImageDetailList();
-    console.log(this.allPhotos);
+    // console.log(this.allPhotos);
   }
 
   onOpenModal() {
