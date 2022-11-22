@@ -1,7 +1,8 @@
 export interface Post {
-  id: number;
+  id: string;
+  since: string;
   name: string;
-  owner: string;
+  owner?: string;
   imagePath?: string;
 }
 

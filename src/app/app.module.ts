@@ -12,6 +12,8 @@ import { ConfigService } from './infrastructure/service/config.service';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { ImagesModule } from './posts/images/images.module';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     AngularFirestoreModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    PostsModule
+    PostsModule,
+    ImagesModule
   ],
   providers: [ConfigService],
   bootstrap: [AppComponent]

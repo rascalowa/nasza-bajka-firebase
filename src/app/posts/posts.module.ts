@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostCreateComponent } from './post-create/post-create.component';
 import { AngularMaterialModule } from '../angular-material.module';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -16,6 +18,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     ReactiveFormsModule,
     AngularMaterialModule,
+    MatCardModule,
+    MatDialogModule,
     RouterModule
   ]
 })

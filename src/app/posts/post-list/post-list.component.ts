@@ -1,8 +1,6 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { DBService } from "../../infrastructure/service/db.service";
-
 import { Post } from "../post.model";
-import { PostsService } from "../posts.service";
 
 @Component({
   selector: "app-post-list",
@@ -12,19 +10,43 @@ import { PostsService } from "../posts.service";
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
   isLoading = false;
-
+  isLoggedIn = true;
+  isEditMode = false;
   allHorses: [];
+  allPhotos: any;
 
-  constructor(public postsService: PostsService, private dbService: DBService) {}
+  constructor(private dbService: DBService) {}
 
   ngOnInit() {
     this.isLoading = true;
     this.getHorses();
+    this.allPhotos = this.dbService.getImageDetailList();
+    console.log(this.allPhotos);
+  }
+
+  onOpenModal() {
+    this.isEditMode = true;
+  }
+
+  onCloseModal() {
+    this.isEditMode = false;
   }
 
   async getHorses() {
     this.allHorses = await this.dbService.getAllHorses();
-    console.log(this.allHorses);
+
+    // console.log(this.allHorses);
+
     this.isLoading = false;
-   }
+  }
+
+  // onAddHorse() {
+  //   const postID: string = this.afs.createId();
+  //   console.log('postID');
+  //   this.dbService.addNewHorse(postID, "New", "Doe", '2020', '/');
+  // }
+
+  onDeletePost(event) {
+    console.log(event)
+  }
 }
