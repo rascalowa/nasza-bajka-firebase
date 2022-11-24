@@ -1,5 +1,4 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
-<span>{{ allHorses?.length }}</span>
 
 <p class="info-text mat-body-1" *ngIf="allHorses?.length <= 0 && !isLoading">No posts added yet!</p>
 
@@ -13,31 +12,16 @@
       <mat-card-header>
         <mat-card-title>{{ horse.name }}</mat-card-title>
       </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a horse">
-      <!-- <img mat-card-image [src]="horse.imagePath" [alt]="horse.name"> -->
+      <img mat-card-image [src]="horse.image" alt="Photo of a horse">
       <mat-card-content>
         <p>Właściciel: {{ horse.owner }}</p>
         <p>W Naszej Bajce od: {{ horse.since }}</p>
+        <p>Id: {{ horse.id }}</p>
       </mat-card-content>
       <mat-card-actions *ngIf="isLoggedIn">
-        <a mat-raised-button color="primary" [routerLink]="'edit/'+horse.id">Add</a>
+        <a mat-raised-button color="primary" [routerLink]="'/edit/'+horse.id">Edit</a>
         <button mat-raised-button color="warn" (click)="onDeletePost($event)">Delete</button>
       </mat-card-actions>
     </mat-card>
   </div>
 </div>
-
-<!-- <section *ngIf="isEditMode">
-  <h2 mat-dialog-title>Install Angular</h2>
-    <mat-dialog-content class="mat-typography">
-    <h3>What is Angular?</h3>
-    <p>Angular is a platform that makes it easy to build applications with the web. Angular
-      combines declarative templates, dependency injection, end to end tooling, and integrated
-      best practices to solve development challenges. Angular empowers developers to build
-      applications that live on the web, mobile, or the desktop</p>
-    </mat-dialog-content>
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
-  </mat-dialog-actions>
-</section> -->

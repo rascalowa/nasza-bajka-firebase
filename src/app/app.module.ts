@@ -4,22 +4,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularMaterialModule } from './angular-material.module';
-import { PrependBaseUrlPipe } from './infrastructure/pipe/prepend-base.pipe';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { PostsModule } from './posts/posts.module';
-import { ConfigService } from './infrastructure/service/config.service';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { ImagesModule } from './posts/images/images.module';
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    PrependBaseUrlPipe
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -29,10 +24,8 @@ import { ImagesModule } from './posts/images/images.module';
     AngularFirestoreModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    PostsModule,
-    ImagesModule
+    PostsModule
   ],
-  providers: [ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

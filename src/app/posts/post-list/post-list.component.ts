@@ -8,20 +8,16 @@ import { Post } from "../post.model";
   styleUrls: ["./post-list.component.css"]
 })
 export class PostListComponent implements OnInit {
-  posts: Post[] = [];
   isLoading = false;
   isLoggedIn = true;
   isEditMode = false;
-  allHorses: [];
-  allPhotos: any;
+  allHorses: Post[] = [];
 
   constructor(private dbService: DBService) {}
 
   ngOnInit() {
     this.isLoading = true;
     this.getHorses();
-    this.allPhotos = this.dbService.getImageDetailList();
-    // console.log(this.allPhotos);
   }
 
   onOpenModal() {
@@ -34,17 +30,8 @@ export class PostListComponent implements OnInit {
 
   async getHorses() {
     this.allHorses = await this.dbService.getAllHorses();
-
-    // console.log(this.allHorses);
-
     this.isLoading = false;
   }
-
-  // onAddHorse() {
-  //   const postID: string = this.afs.createId();
-  //   console.log('postID');
-  //   this.dbService.addNewHorse(postID, "New", "Doe", '2020', '/');
-  // }
 
   onDeletePost(event) {
     console.log(event)

@@ -4,20 +4,12 @@ import { AboutComponent } from "./about/about.component";
 import { ContactComponent } from "./contact/contact.component";
 import { HomePageComponent } from "./home-page/home-page.component";
 import { OfferComponent } from "./offer/offer.component";
-import { ImageListComponent } from "./posts/images/image-list/image-list.component";
-import { ImageComponent } from "./posts/images/image/image.component";
-import { ImagesComponent } from "./posts/images/images.component";
 import { PostCreateComponent } from "./posts/post-create/post-create.component";
 import { PostListComponent } from './posts/post-list/post-list.component';
 
 const routes: Routes = [
   { path: '' , component: HomePageComponent },
   // { path: 'about' , component: AboutComponent },
-  { path: 'image', component: ImagesComponent, children: [
-    { path: 'upload' , component: ImageComponent },
-    { path: 'list' , component: ImageListComponent }
-    ]
-  },
   { path: 'offer' , component: OfferComponent },
   { path: 'animals' , component: PostListComponent },
   { path: 'contact' , component: ContactComponent },

@@ -1,39 +1,44 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { Subject } from "rxjs";
+import { BehaviorSubject } from 'rxjs';
 import { Post } from 'src/app/posts/post.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DBService {
-  private posts: Post[] = [];
-  private postsUpdated = new Subject<Post[]>();
-  imageDetailList: AngularFireList<any>
+  allHorsesList: BehaviorSubject<Post[]> = new BehaviorSubject([]);
 
-  constructor(private firestore: AngularFirestore, private fireStorage: AngularFireDatabase,  private http: HttpClient, private router: Router) { }
-
-  getImageDetailList() {
-    this.imageDetailList = this.fireStorage.list('imageDetails');
-  }
-
-  insertImageDetails(imageDetails) {
-    this.imageDetailList.push(imageDetails);
-  }
+  constructor(
+    private firestore: AngularFirestore,
+    private router: Router
+    ) { }
 
   getAllHorses() {
-    return new Promise<any>((resolve)=> {
-    this.firestore.collection('Horse').valueChanges({ id: 'id' }).subscribe(horses => resolve(horses));
+    const horseList = new Promise<any[]>((resolve)=> {
+    this.firestore.collection('Horse').valueChanges({ idField: 'id' }).subscribe(collection => resolve(collection));
+    });
+
+    horseList.then((horses) => {
+      this.allHorsesList.next(horses)
     })
+    .catch((error) => {
+      console.log(error.message);
+    });
+
+    return horseList;
   }
 
-  addNewHorse(_newId:string, _name:string, _owner:string, _since:string, _image: string) {
-    this.firestore.collection('Horse').doc(_newId).set({ name:_name, owner:_owner, since:_since, image: _image})
+  addNewHorse(horse: Post) {
+    this.firestore.collection('Horse').doc(horse.id).set({
+      id: horse.id,
+      name: horse.name,
+      owner: horse.owner,
+      since: horse.since,
+      image: horse.image
+    })
     .then(() => {
-      console.log('success');
       this.router.navigate(["/animals"]);
     })
     .catch((error) => {
@@ -41,7 +46,13 @@ export class DBService {
     });
    }
 
-   onFileUpload() {
-    console.log('onFileUpload');
+   editHorse(_newId:string, _name:string, _owner:string, _since:string, _image: string) {
+    this.firestore.collection('Horse').doc(_newId).update({ id:_newId, name:_name, owner:_owner, since:_since, image: _image})
+    .then(() => {
+      this.router.navigate(["/animals"]);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
    }
 }

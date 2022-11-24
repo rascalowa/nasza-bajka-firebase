@@ -11,15 +11,23 @@
       >Please enter a name.</mat-error
     >
   </mat-form-field>
-  <div class="image-block">
+  <div class="image-block" *ngIf="mode === 'create' || photoChange">
     <button mat-stroked-button type="button" (click)="filePicker.click()">
       Pick Image
+    </button>
+    <button *ngIf="photoChange" mat-stroked-button type="button" (click)="togglePhotoChange()">
+      No, leave old image
     </button>
     <input
       type="file"
       #filePicker formControlName="image" (change)="onImagePicked($event)"
       accept="*.png.jpg"
     />
+  </div>
+  <div class="image-block" *ngIf="mode === 'edit' && !photoChange">
+    <button mat-stroked-button type="button" (click)="togglePhotoChange()">
+      I want to change image as well
+    </button>
   </div>
   <div class="image-preview">
     <img
@@ -45,5 +53,5 @@
       placeholder="Since"
     />
   </mat-form-field>
-  <button mat-raised-button color="accent" [disabled]="postCreateForm.invalid" type="submit">Save Post</button>
+  <button mat-raised-button color="accent" [disabled]="postCreateForm.invalid && photoChange" type="submit">Save Post</button>
 </form>

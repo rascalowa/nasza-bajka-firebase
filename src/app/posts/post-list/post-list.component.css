@@ -3,7 +3,7 @@ mat-spinner {
 }
 
 mat-card-header {
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .add-button {
@@ -19,12 +19,14 @@ mat-card-header {
 }
 
 .example-card {
-  max-width: 350px;
+  max-width: 300px;
   margin: 15px;
 }
 
 .mat-card-image {
-  max-width: fit-content;
+  object-fit: cover;
+  width: 300px;
+  max-height: 400px;
 }
 
 .mat-card-content p {

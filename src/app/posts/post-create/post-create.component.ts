@@ -5,8 +5,7 @@ import { DBService } from "src/app/infrastructure/service/db.service";
 import { Post } from "../post.model";
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { finalize } from "rxjs/operators";
-
+import { finalize, take } from "rxjs/operators";
 
 @Component({
   selector: "app-post-create",
@@ -19,6 +18,8 @@ export class PostCreateComponent implements OnInit {
   imagePreview: string;
   private mode = "create";
   private postId: string;
+  postToEdit: Post;
+  photoChange = false;
   file: string;
   selectedImage: any = null;
 
@@ -43,23 +44,29 @@ export class PostCreateComponent implements OnInit {
         this.mode = "edit";
         this.postId = paramMap.get("postId");
         this.isLoading = true;
-        console.log(this.postId);
 
-        // this.postsService.getPost(this.postId).subscribe(postData => {
-        //   this.isLoading = false;
-        //   this.post = {id: postData.id, name: postData.name, owner: postData.owner, imagePath: postData.imagePath };
-        //   this.form.setValue({
-        //     name: this.post.name,
-        //     owner: this.post.owner,
-        //     image: this.post.imagePath
-        //   });
-        // });
-        console.log('COMMENTED')
+        this.dbService.allHorsesList
+          .pipe(take(1))
+          .subscribe((res) => {
+            this.postToEdit = res.find(horse => horse.id === this.postId) ?? res[0];
+
+            this.postCreateForm.patchValue({
+              name: this.postToEdit?.name,
+              owner: this.postToEdit?.owner,
+              since: this.postToEdit?.since
+            });
+            this.isLoading = false;
+          }
+        )
       } else {
         this.mode = "create";
         this.postId = null;
       }
     });
+  }
+
+  togglePhotoChange() {
+    this.photoChange = !this.photoChange;
   }
 
   onImagePicked(event) {
@@ -80,14 +87,13 @@ export class PostCreateComponent implements OnInit {
       const postID: string = this.af.createId();
       this.saveImageToStorage(postID, form);
     } else {
-      // this.postsService.updatePost(
-      //   this.postId,
-      //   this.form.value.name,
-      //   this.form.value.owner
-      // );
-      console.log('TO BE UPDATED')
+      if (this.photoChange) {
+        this.saveImageToStorage(this.postId, form);
+      } else {
+        this.postCreateForm['image'] = this.postToEdit.image;
+        this.saveHorseDetails(this.postId, form);
+      }
     }
-    // this.postCreateForm.reset();
   }
 
   saveImageToStorage(postID: string, form) {
@@ -98,30 +104,25 @@ export class PostCreateComponent implements OnInit {
       finalize(() => {
         fileRef.getDownloadURL().subscribe((url) => {
           this.postCreateForm['image'] = url;
-          this.saveImageDetails(postID, form);
+          this.saveHorseDetails(postID, form);
         })
       })
     ).subscribe();
   }
 
-  saveImageDetails(postID, form) {
-    this.dbService.addNewHorse(
-      postID,
-      form.name,
-      form.owner,
-      form.since,
-      this.postCreateForm['image']
-      );
+  saveHorseDetails(postID, form) {
+    const horse: Post = {
+      id: postID,
+      since: form.since,
+      name: form.name,
+      owner: form.owner,
+      image: this.postCreateForm['image']
+    }
+    this.dbService.addNewHorse(horse);
   }
 
   resetForm() {
     this.postCreateForm.reset();
-    // this.postCreateForm.setValue({
-    //   name: '',
-    //   owner: '',
-    //   since:'',
-    //   image: null
-    // })
     this.isLoading = false;
     this.selectedImage = null;
   }
