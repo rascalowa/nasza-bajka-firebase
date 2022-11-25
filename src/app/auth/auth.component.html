@@ -1,0 +1,30 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<form [formGroup]="loginForm" (submit)="onLogin(loginForm.value)" *ngIf="!isLoading">
+  <div class="auth-container">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="login"
+        placeholder="Login"
+        minLength="6"
+      />
+      <mat-error *ngIf="loginForm.get('login').invalid">Please enter your login.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+        placeholder="Password"
+        minLength="6"
+      />
+      <mat-error *ngIf="loginForm.get('password').invalid">Please type your password.</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="accent" [disabled]="loginForm.invalid" type="submit">Login</button>
+  </div>
+</form>
+
+
+

@@ -32,8 +32,4 @@ export class PostListComponent implements OnInit {
     this.allHorses = await this.dbService.getAllHorses();
     this.isLoading = false;
   }
-
-  onDeletePost(event) {
-    console.log(event)
-  }
 }

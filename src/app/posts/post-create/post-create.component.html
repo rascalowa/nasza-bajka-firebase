@@ -12,10 +12,10 @@
     >
   </mat-form-field>
   <div class="image-block" *ngIf="mode === 'create' || photoChange">
-    <button mat-stroked-button type="button" (click)="filePicker.click()">
+    <button mat-stroked-button type="button" color="primary" (click)="filePicker.click()">
       Pick Image
     </button>
-    <button *ngIf="photoChange" mat-stroked-button type="button" (click)="togglePhotoChange()">
+    <button *ngIf="photoChange" mat-stroked-button type="button" color="warn" (click)="togglePhotoChange()">
       No, leave old image
     </button>
     <input

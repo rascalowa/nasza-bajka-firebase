@@ -21,7 +21,7 @@ export class DBService {
     });
 
     horseList.then((horses) => {
-      this.allHorsesList.next(horses)
+      this.allHorsesList.next(horses);
     })
     .catch((error) => {
       console.log(error.message);
@@ -46,13 +46,14 @@ export class DBService {
     });
    }
 
-   editHorse(_newId:string, _name:string, _owner:string, _since:string, _image: string) {
-    this.firestore.collection('Horse').doc(_newId).update({ id:_newId, name:_name, owner:_owner, since:_since, image: _image})
-    .then(() => {
-      this.router.navigate(["/animals"]);
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
-   }
+   deleteHorse(_id:string) {
+    this.firestore.doc(`Horse/${_id}`).delete()
+      .then(() => {
+        this.router.navigate(["/animals"]);
+        this.router
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+    }
 }

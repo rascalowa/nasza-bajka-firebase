@@ -16,11 +16,10 @@
       <mat-card-content>
         <p>Właściciel: {{ horse.owner }}</p>
         <p>W Naszej Bajce od: {{ horse.since }}</p>
-        <p>Id: {{ horse.id }}</p>
       </mat-card-content>
       <mat-card-actions *ngIf="isLoggedIn">
         <a mat-raised-button color="primary" [routerLink]="'/edit/'+horse.id">Edit</a>
-        <button mat-raised-button color="warn" (click)="onDeletePost($event)">Delete</button>
+        <button mat-raised-button color="warn" [routerLink]="'/delete/'+horse.id">Delete</button>
       </mat-card-actions>
     </mat-card>
   </div>
