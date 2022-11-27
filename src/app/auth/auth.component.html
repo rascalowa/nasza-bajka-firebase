@@ -1,30 +1,56 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
+<div *ngIf="!isLoggedIn">
+  <h3>Nasza Bajka admin panel</h3>
+  <form [formGroup]="loginForm" (submit)="onLogin(loginForm.value)" *ngIf="!isLoading">
+    <div class="auth-container">
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          formControlName="email"
+          placeholder="Login"
+          email
+        />
+        <mat-error *ngIf="loginForm.get('email').invalid">Your login must be a valid email address.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+          minLength="6"
+        />
+        <mat-error *ngIf="loginForm.get('password').invalid">Please type your password. Minimum length is 6 characters.</mat-error>
+      </mat-form-field>
+      <!-- [disabled]="loginForm.invalid" -->
+      <button mat-raised-button color="accent" type="submit">Login</button>
+    </div>
+  </form>
+</div>
 
-<form [formGroup]="loginForm" (submit)="onLogin(loginForm.value)" *ngIf="!isLoading">
-  <div class="auth-container">
-    <mat-form-field>
-      <input
-        matInput
-        type="text"
-        formControlName="login"
-        placeholder="Login"
-        minLength="6"
-      />
-      <mat-error *ngIf="loginForm.get('login').invalid">Please enter your login.</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        type="password"
-        formControlName="password"
-        placeholder="Password"
-        minLength="6"
-      />
-      <mat-error *ngIf="loginForm.get('password').invalid">Please type your password.</mat-error>
-    </mat-form-field>
-    <button mat-raised-button color="accent" [disabled]="loginForm.invalid" type="submit">Login</button>
+<div *ngIf="isLoggedIn && !showConfirmationDialog">
+  <div class="confirmation-container">
+    <h5>Hey Karina, you are Logged In:)</h5>
+    <div>
+      <p>If you want to edit list of your animals, you can click button below:  </p>
+      <button mat-button routerLink="/animals" routerLinkActive="mat-accent">Horse List</button>
+    </div>
+
   </div>
-</form>
+</div>
+
+<section *ngIf="isLoggedIn && showConfirmationDialog">
+  <div class="confirmation-container">
+    <h5>Would you like to log out?</h5>
+    <div>
+      <button mat-button color="secondary" (click)="onDontLogout()">No</button>
+      <button mat-button color="primary" (click)="onConfirmLogOut()">Yes, please</button>
+    </div>
+  </div>
+</section>
+
+
 
 
 

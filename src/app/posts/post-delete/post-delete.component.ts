@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { take, tap } from "rxjs/operators";
-import { DBService } from "src/app/infrastructure/service/db.service";
+import { DBService } from "src/app/service/db.service";
 import { Post } from "../post.model";
 
 @Component({

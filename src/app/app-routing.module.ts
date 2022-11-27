@@ -8,17 +8,18 @@ import { OfferComponent } from "./offer/offer.component";
 import { PostCreateComponent } from "./posts/post-create/post-create.component";
 import { PostDeleteComponent } from "./posts/post-delete/post-delete.component";
 import { PostListComponent } from './posts/post-list/post-list.component';
+import { AuthGuard } from "./auth/auth.guard";
 
 const routes: Routes = [
   { path: '' , component: HomePageComponent },
   { path: 'auth' , component: AuthComponent },
-  // { path: 'about' , component: AboutComponent },
+  { path: 'about' , component: AboutComponent },
   { path: 'offer' , component: OfferComponent },
   { path: 'animals' , component: PostListComponent },
   { path: 'contact' , component: ContactComponent },
-  { path: 'edit' , component: PostCreateComponent },
-  { path: 'edit/:postId' , component: PostCreateComponent },
-  { path: 'delete/:postId' , component: PostDeleteComponent },
+  { path: 'edit' , component: PostCreateComponent, canActivate: [AuthGuard] },
+  { path: 'edit/:postId' , component: PostCreateComponent, canActivate: [AuthGuard] },
+  { path: 'delete/:postId' , component: PostDeleteComponent, canActivate: [AuthGuard] },
   { path: '*' , component: PostListComponent },
 ]
 

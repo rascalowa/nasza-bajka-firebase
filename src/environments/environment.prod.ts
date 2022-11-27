@@ -3,6 +3,7 @@ export const environment = {
   firebaseConfig: {
     apiKey: "AIzaSyAP6iTWi9GMUbKIDnZ-259ruH_3oDCR7jU",
     authDomain: "nasza-bajka.firebaseapp.com",
+    databaseURL: "https://nasza-bajka-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "nasza-bajka",
     storageBucket:  "nasza-bajka.appspot.com",
     messagingSenderId:  "139241223404",

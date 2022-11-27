@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { DBService } from "../../infrastructure/service/db.service";
+import { DBService } from "../../service/db.service";
 import { Post } from "../post.model";
 
 @Component({
@@ -8,8 +8,8 @@ import { Post } from "../post.model";
   styleUrls: ["./post-list.component.css"]
 })
 export class PostListComponent implements OnInit {
+  isLoggedIn: boolean = localStorage.getItem('user') !== 'null';
   isLoading = false;
-  isLoggedIn = true;
   isEditMode = false;
   allHorses: Post[] = [];
 
