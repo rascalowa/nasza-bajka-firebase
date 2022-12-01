@@ -9,6 +9,7 @@
           type="text"
           formControlName="email"
           placeholder="Login"
+          required
           email
         />
         <mat-error *ngIf="loginForm.get('email').invalid">Your login must be a valid email address.</mat-error>
@@ -20,11 +21,11 @@
           formControlName="password"
           placeholder="Password"
           minLength="6"
+          required
         />
         <mat-error *ngIf="loginForm.get('password').invalid">Please type your password. Minimum length is 6 characters.</mat-error>
       </mat-form-field>
-      <!-- [disabled]="loginForm.invalid" -->
-      <button mat-raised-button color="accent" type="submit">Login</button>
+      <button mat-raised-button [disabled]="loginForm.invalid" color="accent" type="submit">Login</button>
     </div>
   </form>
 </div>

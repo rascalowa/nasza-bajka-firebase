@@ -1,1 +1,68 @@
-<p>SORRY, 'CONTACT' PAGE IS STILL UNDER CONSTRUCTION</p>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<div class="main-container">
+  <h3>Masz pytanie?</h3>
+
+  <div>
+    <h4>Adres:</h4>
+    <p>Stajnia Nasza Bajka</p>
+    <p>Przerycie 20,</p>
+    <p>47-430 Rudy, Polska</p>
+    <p>tel. <a href="tel:+48791901214">791 901 214</a></p>
+    <p><a href="mailto:rascalowa@op.pl">rascalowa@op.pl</a></p>
+  </div>
+
+  <div>
+    <h4>E-mail</h4>
+    <form [formGroup]="contactForm" (submit)="onSubmit(contactForm.value)">
+      <div class="contact-container">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            formControlName="name"
+            placeholder="Imię"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            formControlName="email"
+            placeholder="Twój e-mail"
+            required
+            email
+          />
+          <mat-error *ngIf="contactForm.get('email').invalid">Proszę podać poprawny adres e-mail.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            formControlName="subject"
+            placeholder="Temat"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <textarea
+            matInput
+            placeholder="Miejsce na Twoją wiadomość"
+            formControlName="content"
+            required
+            ></textarea>
+          <mat-error *ngIf="contactForm.get('content').invalid">Nie można wysłać wiadomości bez treści</mat-error>
+        </mat-form-field>
+        <button class="submit-button" mat-raised-button [disabled]="contactForm.invalid" color="accent" type="submit">Wyślij</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<section *ngIf="showConfirmationDialog">
+  <div class="confirmation-container">
+    <h5>Your message was sent!</h5>
+    <div>
+      <button mat-button color="primary" (click)="onCloseDialog()">OK</button>
+    </div>
+  </div>
+</section>

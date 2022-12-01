@@ -16,13 +16,19 @@ import { AuthService } from './service/auth.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PostsModule } from './posts/posts.module';
+import { ContactComponent } from './contact/contact.component';
+import { OfferComponent } from './offer/offer.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ContactComponent,
+    OfferComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+.contact-container {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  width: 360px;
+}
+
+.submit-button {
+  margin-top: 1rem;
+}
