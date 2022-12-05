@@ -3,11 +3,10 @@
 html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: "Verdana, sans-serif";
+  font-family: "Roboto", sans-serif;
 }
 
 app-post-create {
   max-width: 800px;
   width: 100%;
-
 }

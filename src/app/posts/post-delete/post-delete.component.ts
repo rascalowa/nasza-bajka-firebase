@@ -17,10 +17,8 @@ export class PostDeleteComponent implements OnInit {
     private dbService: DBService
   ) {}
   ngOnInit() {
-    console.log(this.postToDelete);
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       const postId = paramMap.get("postId");
-      console.log(postId);
       this.dbService.allHorsesList
         .pipe(take(1))
         .subscribe((res) => {
@@ -31,7 +29,6 @@ export class PostDeleteComponent implements OnInit {
   }
 
   onDelete() {
-    console.log(this.postToDelete.id);
     this.dbService.deleteHorse(this.postToDelete.id);
   }
 }

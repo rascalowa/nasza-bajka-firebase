@@ -31,7 +31,6 @@ export class AuthService {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        console.log("FROM RESULT SUCCESSFUL");
         this.setUserData(result.user);
         this.afAuth.authState.subscribe((user) => {
           if (user) {
