@@ -6,6 +6,6 @@ import { Component } from "@angular/core";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  logoWhitePath = './assets/logowhite-1662295044206.png';
-  titleWhitePath = './assets/nb-logo-white.png';
+  logoPath = './assets/Logo.png';
+  logoTextPath = './assets/LogoText.png';
 }

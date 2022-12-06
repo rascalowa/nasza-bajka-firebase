@@ -1,6 +1,6 @@
 mat-toolbar {
-  background: #1c4e2a;
-  color: #F0F0F0;
+  background: #fff;
+  color: #707070;
   display: flex;
   justify-content: flex-end;
   align-content: center;
@@ -30,10 +30,10 @@ a:hover {
 }
 
 .mat-button {
-  font-size: medium;
+  font-weight: 300;
 }
 
 .mat-button.mat-accent {
-  color: #b8ac0c;
+  color: #cec109;
   font-weight: 500;
 }

@@ -1,4 +1,9 @@
-<img [src]="mainPhoto" alt="stable-background">
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<div class="home-container">
+  <img [src]="mainPhoto" class="main-photo" alt="stable-background">
+</div>
+
 <p>HOME PAGE</p>
 <img [src]="smallPhoto" alt="stable-background">
 
