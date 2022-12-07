@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { DBService } from '../service/db.service';
 import { ContactDetails } from './contact.model';
 import { ContactService } from './contact.service';
 
@@ -9,6 +10,8 @@ import { ContactService } from './contact.service';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
+  mainPhoto: string;
+  smallPhoto: string;
   messageSended = false;
   isLoading = false;
   showConfirmationDialog = false;
@@ -20,10 +23,16 @@ export class ContactComponent implements OnInit {
     content: new FormControl('')
   });
 
-  constructor( private contactService: ContactService ) {}
+  constructor( private contactService: ContactService, private dbService: DBService) {}
 
   ngOnInit() {
     this.resetForm();
+    this.dbService.getLayoutPhoto('L-kontakt.jpg').then((url) => {
+      this.mainPhoto = url;
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
   }
 
   onSubmit(form) {

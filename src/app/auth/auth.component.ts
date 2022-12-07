@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { AuthService } from "../service/auth.service";
+import { DBService } from "../service/db.service";
 import { LoginData } from "./login.model";
 
 @Component({
@@ -9,6 +10,7 @@ import { LoginData } from "./login.model";
   styleUrls: ["./auth.component.css"]
 })
 export class AuthComponent {
+  mainPhoto: string;
   isLoading = false;
   isLoggedIn: boolean = localStorage.getItem('user') !== 'null';
   showConfirmationDialog: boolean;
@@ -19,10 +21,19 @@ export class AuthComponent {
   });
 
   constructor(
+    private dbService: DBService,
     private readonly authService: AuthService
   ) {}
 
   ngOnInit() {
+    this.dbService.getLayoutPhoto('L-auth.jpg').then((url) => {
+      this.mainPhoto = url;
+      this.isLoading = false;
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+
     this.resetForm();
     this.showConfirmationDialog = this.isLoggedIn;
   }

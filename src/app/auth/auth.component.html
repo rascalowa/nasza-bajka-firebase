@@ -1,4 +1,9 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<picture class="home-container">
+  <img [src]="mainPhoto" class="main-photo" alt="stable-background">
+</picture>
+
 <div *ngIf="!isLoggedIn">
   <h3>Nasza Bajka admin panel</h3>
   <form [formGroup]="loginForm" (submit)="onLogin(loginForm.value)" *ngIf="!isLoading">

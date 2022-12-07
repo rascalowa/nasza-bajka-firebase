@@ -1,5 +1,9 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 
+<picture class="home-container">
+  <img [src]="mainPhoto" class="main-photo" alt="stable-background">
+</picture>
+
 <p class="info-text mat-body-1" *ngIf="allHorses?.length <= 0 && !isLoading">No posts added yet!</p>
 
 <div class="add-button" *ngIf="isLoggedIn">

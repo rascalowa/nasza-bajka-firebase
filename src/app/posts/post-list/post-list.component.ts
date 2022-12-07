@@ -8,6 +8,7 @@ import { Post } from "../post.model";
   styleUrls: ["./post-list.component.css"]
 })
 export class PostListComponent implements OnInit {
+  mainPhoto: string;
   isLoggedIn: boolean = localStorage.getItem('user') !== 'null';
   isLoading = false;
   isEditMode = false;
@@ -16,6 +17,12 @@ export class PostListComponent implements OnInit {
   constructor(private dbService: DBService) {}
 
   ngOnInit() {
+    this.dbService.getLayoutPhoto('L-mieszkancy.jpg').then((url) => {
+      this.mainPhoto = url;
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
     this.isLoading = true;
     this.getHorses();
   }

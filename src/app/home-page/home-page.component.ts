@@ -12,7 +12,7 @@ export class HomePageComponent implements OnInit {
   smallPhoto: string;
   isLoading = true;
 
-  constructor(private dbService: DBService, private cdr: ChangeDetectorRef) {}
+  constructor(private dbService: DBService) {}
 
   ngOnInit() {
     this.dbService.getLayoutPhoto('L-stajnia.jpg').then((url) => {
