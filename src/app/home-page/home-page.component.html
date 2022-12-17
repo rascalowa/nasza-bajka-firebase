@@ -1,9 +1,38 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="main-container">
+  <picture>
+    <img [src]="mainPhoto" class="main-photo" alt="stable-background">
+  </picture>
+  <div class="main-content-outer">
+    <div class="main-content-inner">
+      <section class="styled-section">
+        <div class="section-inner">
+          <div class="curve left"></div>
+          <h2 class="curve-text">WITAMY W NASZEJ BAJCE</h2>
+          <p class="curve-text">Miejsce, gdzie Ty i Twój koń będziecie czuli się dobrze.</p>
+        </div>
+        <img class="small-photo right" [src]="smallPhoto1" alt="stable-background">
+      </section>
+      <section class="styled-section reverse">
+        <div class="section-inner reverse">
+          <div class="curve right"></div>
+          <h2 class="curve-text right">CISZA, SPOKÓJ I PIĘKNE TERENY</h2>
+          <p class="curve-text right">Nasza Bajka stoi na skraju lasu, co czyni ją wprost idealną bazą wypadową na leśne przechadzki. Piaszczysta ujeżdżalnia i zielone pastwiska zapewniają naszym podopiecznym odpowiednią dawkę swobody i ruchu!</p>
+        </div>
+        <img class="small-photo left" [src]="smallPhoto2" alt="stable-background">
+      </section>
+      <section class="styled-section">
+        <div class="section-inner">
+          <div class="curve left"></div>
+          <h2 class="curve-text">NAUKA JAZDY</h2>
+          <p class="curve-text">Szukasz aktywnego wypoczynku? Zabierzemy Cię na relaksującą przejażdżkę po naszych lasach!<br>Chcesz podszkolić swoją technikę jazdy? Możesz liczyć na wiele cennych uwag ze strony licencjonowanego instruktora.</p>
+        </div>
+        <img class="small-photo right" [src]="smallPhoto3" alt="stable-background">
+        <div class="curve"></div>
+      </section>
+    </div>
+  </div>
+</div>
 
-<picture class="home-container">
-  <img [src]="mainPhoto" class="main-photo" alt="stable-background">
-</picture>
 
-<p>HOME PAGE</p>
-<img [src]="smallPhoto" alt="stable-background">
 

@@ -1,7 +1,7 @@
-.home-container {
-  width: 100%;
-}
+  .title {
+    font-weight: 300;
+  }
 
-.main-photo {
-  width: stretch;
-}
+  .under-title {
+    font-weight: 300;
+  }

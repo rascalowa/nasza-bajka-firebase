@@ -3,10 +3,28 @@ main {
   margin: 0;
   justify-content: center;
   min-height: 96%;
+  background-color: rgb(250, 250, 250);
 }
 
-app-contact {
+.main-container {
   width: 100%;
+}
+
+.main-photo {
+  width: stretch;
+}
+
+.main-content-outer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.main-content-inner {
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media (max-width: 500px){

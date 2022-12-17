@@ -2,38 +2,17 @@ mat-toolbar {
   background: #fff;
   color: #707070;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-content: center;
   max-height: 4rem;
   margin-top: auto;
 }
 
-.nav-links {
+.footer {
   display: flex;
 }
 
-li {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  text-decoration: none;
-  font-weight: 400;
-  color: #F0F0F0;
-  font-size: 14px;
-}
-
-a:hover {
-  color:  #cb9734;
-}
-
-.mat-button {
-  font-weight: 300;
-}
-
-.mat-button.mat-accent {
-  color: #cec109;
-  font-weight: 500;
+p {
+  font-size: 12px;
+  color: #dedede;
 }

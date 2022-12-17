@@ -1,9 +1,78 @@
-/* You can add global styles to this file, and also import other style files */
-
 html, body { height: 100%; }
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
+}
+
+.styled-section {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 400px;
+  padding: 20px 10vw;
+}
+
+.styled-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.section-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-inner.reverse {
+  align-items: flex-end;
+  text-align: end;
+  padding-left: 2rem;
+}
+
+.small-photo {
+  height: 300px;
+  width: 235px;
+  border-radius: 2rem;
+}
+
+.small-photo.left {
+  margin-right: 2rem;
+}
+
+.small-photo.right {
+  margin-left: 2rem;
+}
+
+.curve {
+  position: absolute;
+  height: 200px;
+  width: 100%;
+  top: 0;
+}
+
+.curve-text {
+  z-index: 1;
+}
+
+.curve::after {
+  content: '';
+  display: block;
+  position: absolute;
+  border-radius: 40% 50% 80%;
+  width: 14rem;
+  height: 100%;
+}
+
+.left.curve::after {
+  background-color: rgb(229, 241, 215);
+  transform: translate(-20%, 70%);
+}
+
+.right.curve::after {
+  right: 0;
+  border-radius: 60% 50% 60% 80%;
+  background-color: rgb(226, 231, 165);
+  transform: translate(20%, 50%);
 }
 
 app-post-create {
