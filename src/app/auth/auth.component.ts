@@ -7,7 +7,7 @@ import { LoginData } from "./login.model";
 @Component({
   selector: "app-auth",
   templateUrl: "./auth.component.html",
-  styleUrls: ["./auth.component.css"]
+  styleUrls: ["./auth.component.css", '../app.component.css']
 })
 export class AuthComponent {
   mainPhoto: string;

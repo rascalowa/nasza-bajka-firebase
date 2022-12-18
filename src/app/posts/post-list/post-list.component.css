@@ -23,11 +23,13 @@ mat-card-header {
 .horses-section {
   display: flex;
   flex-wrap: wrap;
-  justify-content:center
+  justify-content:center;
+  margin-top: 20px;
 }
 
 .example-card {
   max-width: 300px;
+  border-radius: 12px;
   margin: 15px;
 }
 

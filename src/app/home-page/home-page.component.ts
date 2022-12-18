@@ -1,11 +1,11 @@
-import { ChangeDetectorRef, OnInit } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { DBService } from '../service/db.service';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css', '../app.component.css']
+  styleUrls: ['../app.component.css']
 })
 export class HomePageComponent implements OnInit {
   mainPhoto: string;
@@ -16,8 +16,6 @@ export class HomePageComponent implements OnInit {
 
   constructor(private dbService: DBService) {}
 
-
-  // REFACTOR - pull 4 at once!!!!
   ngOnInit() {
     this.dbService.getLayoutPhoto('L-stajnia.jpg').then((url) => {
       this.mainPhoto = url;
@@ -27,7 +25,7 @@ export class HomePageComponent implements OnInit {
       console.log(error.message);
     });
 
-    this.dbService.getLayoutPhoto('S-stajnia-2.jpg').then((url) => {
+    this.dbService.getLayoutPhoto('S-stajnia-1.jpg').then((url) => {
       this.smallPhoto1 = url;
     })
     .catch((error) => {
@@ -41,7 +39,7 @@ export class HomePageComponent implements OnInit {
       console.log(error.message);
     });
 
-    this.dbService.getLayoutPhoto('S-stajnia-2.jpg').then((url) => {
+    this.dbService.getLayoutPhoto('S-stajnia-3.jpg').then((url) => {
       this.smallPhoto3 = url;
     })
     .catch((error) => {

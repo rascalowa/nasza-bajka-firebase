@@ -14,7 +14,7 @@
   <div *ngFor="let horse of allHorses">
     <mat-card class="example-card">
       <mat-card-header>
-        <mat-card-title>{{ horse.name }}</mat-card-title>
+        <mat-card-title>{{ horse.name | uppercase }}</mat-card-title>
       </mat-card-header>
       <img mat-card-image [src]="horse.image" alt="Photo of a horse">
       <mat-card-content>

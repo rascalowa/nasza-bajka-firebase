@@ -1,12 +1,33 @@
 .contact-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.contact-section-inner {
+  margin: 15px;
+  padding: 10px 40px 20px;
+  background-color: rgb(239, 235, 224);
+  border-radius: 5rem 4rem;
 }
 
 mat-form-field {
-  width: 360px;
+  width: 400px;
 }
 
 .submit-button {
   margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;
+  background-color: #837d1f;
+}
+
+.contact-form {
+  padding-bottom: 20px;
+}
+
+.links > a {
+  color: #837d1f;
+  font-weight: 500;
 }

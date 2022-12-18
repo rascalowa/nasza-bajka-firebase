@@ -1,6 +1,44 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
-
-<picture class="home-container">
-  <img [src]="mainPhoto" class="main-photo" alt="stable-background">
-</picture>
-<!-- Marzysz o pierwszej przejażdżce na końskim grzbiecie? Z przyjemnością zarazimy Cię miłością do koni! -->
+<div class="main-container">
+  <picture class="home-container">
+    <img [src]="mainPhoto" class="main-photo" alt="stable-background">
+  </picture>
+  <div class="main-content-outer">
+    <div class="main-content-inner">
+      <section class="styled-section">
+        <div class="section-inner">
+          <div class="curve left"></div>
+          <h2 class="curve-text">PENSJONAT</h2>
+          <p class="curve-text">Nasi końscy przyjaciele potrzebują odpowiedniej dawki ruchu, umożliwiają im to trawiaste padoki i długie leśne ścieżki. Dla ambitnych mamy piaszczystą ujeżdżalnię z literami czworoboku i kompletem przeszkód, gdzie przyszli sportowcy mogą szkolić się niezależnie od dyscypliny.</p>
+        </div>
+        <img class="small-photo right" [src]="smallPhotoPensjonat" alt="stable-background">
+      </section>
+      <section class="styled-section reverse">
+        <div class="section-inner reverse">
+          <div class="curve right"></div>
+          <h2 class="curve-text right">TRENINGI</h2>
+          <p class="curve-text right">Początkującym i średnio zaawansowanym proponujemy jazdy terenowe, gdzie w przyjemnym otoczeniu możemy szlifować nasz warsztat jeździecki. Dla bardziej wymagających mamy szkolenia na ujeżdżalni, gdzie żaden błąd techniczny nie umknie licencjonowanemu instruktorowi.</p>
+        </div>
+        <img class="small-photo left" [src]="smallPhotoTreningi" alt="stable-background">
+      </section>
+      <section class="styled-section">
+        <div class="section-inner">
+          <div class="curve left"></div>
+          <h2 class="curve-text">SPACERKI</h2>
+          <p class="curve-text">Marzysz o pierwszej przejażdżce na końskim grzbiecie? Nie ważne czy masz 7 lat czy 70, z przyjemnością pomożemy Ci postawić pierwsze kroki w spokojnej atmosferze!</p>
+        </div>
+        <img class="small-photo right" [src]="smallPhotoSpacerki" alt="stable-background">
+        <div class="curve"></div>
+      </section>
+      <section class="styled-section reverse">
+        <div class="section-inner reverse">
+          <div class="curve right"></div>
+          <h2 class="curve-text right">INNE POMYSŁY</h2>
+          <p class="curve-text right">Chcesz zrobić sesję zdjęciową w końskim otoczeniu? Może myślisz o zorganizowaniu wycieczki firmowej do Naszej Bajki? Możliwości jest wiele, zapraszamy do kontaktu!</p>
+        </div>
+        <img class="small-photo left" [src]="smallPhotoInne" alt="stable-background">
+        <div class="curve"></div>
+      </section>
+    </div>
+  </div>
+</div>

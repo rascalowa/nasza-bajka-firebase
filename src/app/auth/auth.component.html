@@ -4,7 +4,8 @@
   <img [src]="mainPhoto" class="main-photo" alt="stable-background">
 </picture>
 
-<div *ngIf="!isLoggedIn">
+<div class="main-content-outer" *ngIf="!isLoggedIn">
+  <div class="main-content-inner">
   <h3>Nasza Bajka admin panel</h3>
   <form [formGroup]="loginForm" (submit)="onLogin(loginForm.value)" *ngIf="!isLoading">
     <div class="auth-container">
@@ -30,9 +31,10 @@
         />
         <mat-error *ngIf="loginForm.get('password').invalid">Please type your password. Minimum length is 6 characters.</mat-error>
       </mat-form-field>
-      <button mat-raised-button [disabled]="loginForm.invalid" color="accent" type="submit">Login</button>
+      <button mat-raised-button [disabled]="loginForm.invalid" type="submit">Login</button>
     </div>
   </form>
+  </div>
 </div>
 
 <div *ngIf="isLoggedIn && !showConfirmationDialog">

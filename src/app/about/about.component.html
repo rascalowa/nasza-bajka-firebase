@@ -1,5 +1,44 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
-
-<picture class="home-container">
-  <img [src]="mainPhoto" class="main-photo" alt="stable-background">
-</picture>
+<div class="main-container">
+  <picture class="home-container">
+    <img [src]="mainPhoto" class="main-photo" alt="stable-background">
+  </picture>
+  <div class="main-content-outer">
+    <div class="main-content-inner">
+      <section class="styled-section">
+        <div class="section-inner">
+          <div class="curve left"></div>
+          <h2 class="curve-text">KARINA</h2>
+          <p class="curve-text">Szefowa całego zamieszania. Koniara od dziecka. Była zawodniczka RKS Energetyk Rybnik w dyscyplinach skoki, ujeżdżenie i WKKW. Instruktor sportu jeździeckiego. Spełniła swoje dziecięce marzenie o prowadzeniu stajni zarażając innych swoją miłością do koni.</p>
+        </div>
+        <img class="small-photo right" [src]="smallPhotoKaren" alt="stable-background">
+      </section>
+      <section class="styled-section reverse">
+        <div class="section-inner reverse">
+          <div class="curve right"></div>
+          <h2 class="curve-text right">KLARA</h2>
+          <p class="curve-text right">Od kołyski otoczona końmi. Następczyni szefowej, już marzy o przejęciu stajni. Wschodząca gwiazda HobbyHorse. Różowy to jej drugie imię.</p>
+        </div>
+        <img class="small-photo left" [src]="smallPhotoKlara" alt="stable-background">
+      </section>
+      <section class="styled-section">
+        <div class="section-inner">
+          <div class="curve left"></div>
+          <h2 class="curve-text">KINGA</h2>
+          <p class="curve-text">Nadworny fryzjer Naszej Bajki. Człowiek czynu, najpierw zrobi, potem kombinuje jak uniknąć szlabanu.Od małego dzieli pasję z siostrą trenując swoje nogi na coraz wyższych przeszkodach.</p>
+        </div>
+        <img class="small-photo right" [src]="smallPhotoKinia" alt="stable-background">
+        <div class="curve"></div>
+      </section>
+      <section class="styled-section reverse">
+        <div class="section-inner reverse">
+          <div class="curve right"></div>
+          <h2 class="curve-text right">MAREK</h2>
+          <p class="curve-text right">Złota rączka Naszej Bajki. Ma nieskończone pokłady cierpliwości na wysłuchiwanie o kolejnych stajennych ulepszeniach. Spośród wszystkich koni najbardziej lubi te mechaniczne.</p>
+        </div>
+        <img class="small-photo left" [src]="smallPhotoMarecki" alt="stable-background">
+        <div class="curve"></div>
+      </section>
+    </div>
+  </div>
+</div>

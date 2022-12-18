@@ -11,7 +11,7 @@ body {
   align-items: center;
   justify-content: space-between;
   min-height: 400px;
-  padding: 20px 10vw;
+  padding: 0 10vw;
 }
 
 .styled-section.reverse {
@@ -47,6 +47,7 @@ body {
   position: absolute;
   height: 200px;
   width: 100%;
+  margin-bottom: 10px;
   top: 0;
 }
 
@@ -65,7 +66,7 @@ body {
 
 .left.curve::after {
   background-color: rgb(229, 241, 215);
-  transform: translate(-20%, 70%);
+  transform: translate(-20%, 50%);
 }
 
 .right.curve::after {
