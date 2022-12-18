@@ -8,3 +8,7 @@ button {
   display: flex;
   flex-direction: column;
 }
+
+.auth-buttons button {
+  margin: 10px;
+}

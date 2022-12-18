@@ -37,8 +37,8 @@
   </div>
 </div>
 
-<div *ngIf="isLoggedIn && !showConfirmationDialog">
-  <div class="confirmation-container">
+<div class="main-content-outer" *ngIf="isLoggedIn && !showConfirmationDialog">
+  <div class="main-content-inner confirmation-container">
     <h5>Hey Karina, you are Logged In:)</h5>
     <div>
       <p>If you want to edit list of your animals, you can click button below:  </p>
@@ -48,15 +48,15 @@
   </div>
 </div>
 
-<section *ngIf="isLoggedIn && showConfirmationDialog">
-  <div class="confirmation-container">
+<div class="main-content-outer" *ngIf="isLoggedIn && showConfirmationDialog">
+  <div class="main-content-inner confirmation-container">
     <h5>Would you like to log out?</h5>
-    <div>
+    <div class="auth-buttons">
       <button mat-button color="secondary" (click)="onDontLogout()">No</button>
       <button mat-button color="primary" (click)="onConfirmLogOut()">Yes, please</button>
     </div>
   </div>
-</section>
+</div>
 
 
 
