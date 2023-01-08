@@ -27,8 +27,15 @@ main {
   justify-content: center;
 }
 
-@media (max-width: 500px){
+/* @media (max-width: 1260px){
+  main {
+    background-color: rgb(220, 163, 245);
+    width: 100%;
+  }
+} */
+
+/* @media (max-width: 500px){
   main {
     width: 95%
   }
-}
+} */
