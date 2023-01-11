@@ -43,3 +43,13 @@ a {
   color: #837d1f;
   font-weight: 500;
 }
+
+.mat-menu-item {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.mat-menu-item.mat-accent {
+  color: #837d1f;
+  font-weight: 500;
+}

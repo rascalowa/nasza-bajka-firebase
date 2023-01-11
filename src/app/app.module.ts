@@ -6,6 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularMaterialModule } from './angular-material.module';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -37,7 +40,10 @@ import { AboutComponent } from './about/about.component';
     AngularFireAuthModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LayoutModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
