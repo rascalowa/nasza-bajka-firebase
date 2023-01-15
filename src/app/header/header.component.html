@@ -7,7 +7,7 @@
       <img [src]="logoTextPath" height="50px">
     </a>
   </div>
-  <div class="nav-links" *ngIf="(screenSize$ | async) === 'md' || (screenSize$ | async) === 'lg'">
+  <div class="nav-links" *ngIf="!isMobile">
     <li>
       <a mat-button routerLink="/home" routerLinkActive="mat-accent">STAJNIA</a>
     </li>
@@ -21,7 +21,7 @@
       <a mat-button routerLink="/contact" routerLinkActive="mat-accent">KONTAKT</a>
     </li>
   </div>
-  <div *ngIf="(screenSize$ | async) === 'sm' || (screenSize$ | async) === 'xs'">
+  <div *ngIf="isMobile">
     <button mat-button [matMenuTriggerFor]="beforeMenu">
       <mat-icon>menu</mat-icon>
     </button>
