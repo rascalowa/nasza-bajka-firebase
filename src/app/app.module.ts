@@ -15,8 +15,10 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
+import { LoadingComponent } from './loading/loading.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { HomePageComponent } from './home-page/home-page.component';
 import { ContactComponent } from './contact/contact.component';
 import { OfferComponent } from './offer/offer.component';
 import { AboutComponent } from './about/about.component';
@@ -24,8 +26,10 @@ import { AboutComponent } from './about/about.component';
 @NgModule({
   declarations: [
     AppComponent,
+    LoadingComponent,
     HeaderComponent,
     FooterComponent,
+    HomePageComponent,
     ContactComponent,
     OfferComponent,
     AboutComponent

@@ -1,4 +1,3 @@
-<mat-spinner *ngIf="isLoading"></mat-spinner>
 <div class="main-container">
   <picture class="home-container">
     <img [src]="mainPhoto" class="main-photo" alt="stable-background">
@@ -10,13 +9,16 @@
           <div class="contact-section-inner-form">
             <h4>Adres:</h4>
             <p>Stajnia Nasza Bajka<br>
-              Przerycie 20,<br>
+              Przerycie 18,<br>
               47-430 Rudy, Polska</p>
             <p class="links">tel.
-              <a href="tel:+48791901214">791 901 214</a><br>
-              <a href="mailto:rascalowa@op.pl">rascalowa@op.pl</a>
+              <a href="tel:+48601187432">601187432</a><br>
+              <a href="mailto:naszabajka@vp.pl">naszabajka@vp.pl</a>
             </p>
           </div>
+        </div>
+        <div class="successful-mail" *ngIf="messageSended">
+          <span>Wiadomość została wysłana!</span>
         </div>
         <div class="contact-form">
           <h4>Masz pytanie?</h4>
@@ -66,12 +68,3 @@
     </div>
   </div>
 </div>
-
-<section *ngIf="showConfirmationDialog">
-  <div class="confirmation-container">
-    <h5>Your message was sent!</h5>
-    <div>
-      <button mat-button color="primary" (click)="onCloseDialog()">OK</button>
-    </div>
-  </div>
-</section>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { DBService } from '../service/db.service';
-import { ContactDetails } from './contact.model';
 import { ContactService } from './contact.service';
+import { LoaderService } from '../service/loader.service';
 
 @Component({
   selector: 'app-contact',
@@ -13,8 +13,6 @@ export class ContactComponent implements OnInit {
   mainPhoto: string;
   smallPhoto: string;
   messageSended = false;
-  isLoading = false;
-  showConfirmationDialog = false;
 
   contactForm = new FormGroup({
     name: new FormControl(''),
@@ -23,12 +21,18 @@ export class ContactComponent implements OnInit {
     content: new FormControl('')
   });
 
-  constructor( private contactService: ContactService, private dbService: DBService) {}
+  constructor(
+    private contactService: ContactService,
+    private dbService: DBService,
+    private readonly loaderService: LoaderService
+    ) {}
 
   ngOnInit() {
+    this.loaderService.setLoading(true);
     this.resetForm();
     this.dbService.getLayoutPhoto('L-kontakt.jpg').then((url) => {
       this.mainPhoto = url;
+      this.loaderService.setLoading(false);
     })
     .catch((error) => {
       console.log(error.message);
@@ -36,19 +40,16 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit(form) {
-    this.isLoading = true;
+    this.loaderService.setLoading(true);
     this.contactService.sendMessage(form)
       .subscribe(() => {
         this.messageSended = true;
-        this.isLoading = false;
+        this.resetForm();
+        this.loaderService.setLoading(false);
       }, error => {
-        this.isLoading = false;
         console.log({ error })
+        this.loaderService.setLoading(false);
       })
-  }
-
-  onCloseDialog() {
-    this.showConfirmationDialog = false;
   }
 
   onDestroy() {
@@ -57,6 +58,9 @@ export class ContactComponent implements OnInit {
 
   resetForm() {
     this.contactForm.reset();
-    this.isLoading = false;
+
+    Object.keys(this.contactForm.controls).forEach(key => {
+      this.contactForm.get(key).setErrors(null) ;
+    });
   }
 }

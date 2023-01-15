@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { map } from "rxjs";
+import { Component, ChangeDetectorRef, OnInit } from "@angular/core";
+import { Observable, takeUntil, Subject } from "rxjs";
+import { LAYOUT_ENUM } from "../constans/layout.constans";
 import { LayoutService } from "../service/layout.service";
 
 @Component({
@@ -10,13 +11,25 @@ import { LayoutService } from "../service/layout.service";
 export class HeaderComponent implements OnInit {
   logoPath = './assets/Logo.png';
   logoTextPath = './assets/LogoText.png';
-  screenSize: string;
+  screenSize$: Observable<LAYOUT_ENUM>;
+  componentDestroyed$ = new Subject<void>();
 
-  constructor(private layoutService: LayoutService) {}
+  constructor(
+    private layoutService: LayoutService,
+    private readonly cd: ChangeDetectorRef
+  ) {
+    this.screenSize$ = this.layoutService.size$.asObservable();
+  }
 
   ngOnInit() {
-    this.layoutService.size.subscribe(data => {
-      this.screenSize = data
-    })
+    this.screenSize$
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe(
+        () => this.cd.detectChanges()
+      )
+  }
+
+  ngOnDestroy() {
+    this.componentDestroyed$.next();
   }
 }

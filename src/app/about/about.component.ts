@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DBService } from '../service/db.service';
+import { LoaderService } from '../service/loader.service';
 
 @Component({
   selector: 'app-about',
@@ -12,45 +13,50 @@ export class AboutComponent {
   smallPhotoKlara: string;
   smallPhotoKinia: string;
   smallPhotoMarecki: string;
-  isLoading = true;
 
-  constructor(private dbService: DBService) {}
+  constructor(
+    private dbService: DBService,
+    private readonly loaderService: LoaderService
+    ) {}
 
   ngOnInit() {
-    this.dbService.getLayoutPhoto('L-onas.jpg').then((url) => {
+    this.loaderService.setLoading(true);
+    let promiseMain = this.dbService.getLayoutPhoto('L-onas.jpg').then((url) => {
       this.mainPhoto = url;
-      this.isLoading = false;
     })
     .catch((error) => {
       console.log(error.message);
     });
 
-    this.dbService.getLayoutPhoto('S-onas-karen.jpg').then((url) => {
+    let promiseSmallKaren = this.dbService.getLayoutPhoto('S-onas-karen.jpg').then((url) => {
       this.smallPhotoKaren = url;
     })
     .catch((error) => {
       console.log(error.message);
     });
 
-    this.dbService.getLayoutPhoto('S-onas-klara.jpg').then((url) => {
+    let promiseSmallKlara = this.dbService.getLayoutPhoto('S-onas-klara.jpg').then((url) => {
       this.smallPhotoKlara = url;
     })
     .catch((error) => {
       console.log(error.message);
     });
 
-    this.dbService.getLayoutPhoto('S-onas-kinia.jpg').then((url) => {
+    let promiseSmallKinia = this.dbService.getLayoutPhoto('S-onas-kinia.jpg').then((url) => {
       this.smallPhotoKinia = url;
     })
     .catch((error) => {
       console.log(error.message);
     });
 
-    this.dbService.getLayoutPhoto('S-onas-marecki.jpg').then((url) => {
+    let promiseSmallMarecki = this.dbService.getLayoutPhoto('S-onas-marecki.jpg').then((url) => {
       this.smallPhotoMarecki = url;
     })
     .catch((error) => {
       console.log(error.message);
     });
+
+    Promise.allSettled([promiseMain, promiseSmallKaren, promiseSmallKlara, promiseSmallKinia, promiseSmallMarecki])
+    .then(() => this.loaderService.setLoading(false));
   }
 }
