@@ -14,6 +14,7 @@
 
 mat-form-field {
   width: 400px;
+  margin: 10px;
 }
 
 .submit-button {
@@ -24,7 +25,7 @@ mat-form-field {
 }
 
 .contact-form {
-  padding-bottom: 20px;
+  padding: 20px;
 }
 
 .links > a {
@@ -41,4 +42,15 @@ mat-form-field {
   margin-bottom: 10px;
   padding: 10px;
   background-color: #5fb87c;
+}
+
+.fb {
+  background-color: rgb(229, 241, 215);
+  margin-bottom: 20px;
+}
+
+.fb > span > a {
+  color: #5d5815;
+  font-weight: 500;
+  text-decoration: none;
 }
