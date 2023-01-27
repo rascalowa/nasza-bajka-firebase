@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DBService } from '../service/db.service';
 import { ContactService } from './contact.service';
@@ -12,13 +12,13 @@ import { LayoutService } from '../service/layout.service';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css', '../app.component.css']
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, OnDestroy {
   mainPhoto: string;
   smallPhoto: string;
   messageSended = false;
   screenSize$: Observable<LAYOUT_ENUM>;
   componentDestroyed$ = new Subject<void>();
-  isMobile: boolean;
+  screen = LAYOUT_ENUM.MEDIUM;
 
   contactForm = new FormGroup({
     name: new FormControl(''),
@@ -44,15 +44,14 @@ export class ContactComponent implements OnInit {
       this.loaderService.setLoading(false);
     })
     .catch((error) => {
-      console.log(error.message);
+      console.warn(error.message);
     });
 
     this.screenSize$
       .pipe(
         takeUntil(this.componentDestroyed$),
         tap(data => {
-          console.log(data)
-          this.isMobile = data === LAYOUT_ENUM.XSMALL || data === LAYOUT_ENUM.SMALL;
+          this.screen = data;
         })
       )
       .subscribe()
@@ -66,12 +65,12 @@ export class ContactComponent implements OnInit {
         this.resetForm();
         this.loaderService.setLoading(false);
       }, error => {
-        console.log({ error })
+        console.warn({ error })
         this.loaderService.setLoading(false);
       })
   }
 
-  onDestroy() {
+  ngOnDestroy() {
     this.messageSended = false;
     this.componentDestroyed$.next();
   }

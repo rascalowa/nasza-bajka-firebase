@@ -15,6 +15,12 @@ mat-toolbar {
 
 .navbar-logo {
   padding-top: 4px;
+  display: flex;
+  align-self: center;
+}
+
+.logo-mobile {
+  height: 40px;
 }
 
 .nav-links {

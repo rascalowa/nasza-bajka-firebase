@@ -2,7 +2,10 @@
   <picture class="home-container">
     <img [src]="mainPhoto" class="main-photo" alt="stable-background">
   </picture>
-  <div class="main-content-outer">
+  <div class="main-content-outer" [ngClass]="{
+    'mobile-xs': screen === 'xs',
+    'mobile-sm': screen === 'sm'
+  }">
     <div class="main-content-inner">
       <div class="contact-container">
         <div class="contact-section-inner">
@@ -65,7 +68,7 @@
           </form>
         </div>
         <div class="successful-mail fb">
-          <span>Odwiedź nas również na <a href="https://www.facebook.com/stajnianaszabajka" target="_blank">Facebooku</a></span>
+          <span><a href="https://www.facebook.com/stajnianaszabajka" target="_blank">Odwiedź nas również na Facebooku</a></span>
         </div>
       </div>
     </div>

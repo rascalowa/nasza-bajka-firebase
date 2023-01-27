@@ -3,7 +3,10 @@
     <img [src]="mainPhoto" class="main-photo" alt="stable-background">
   </picture>
   <div class="main-content-outer">
-    <div class="main-content-inner">
+    <div class="main-content-inner" [ngClass]="{
+      'mobile-xs': screen === 'xs',
+      'mobile-sm': screen === 'sm'
+    }">
       <section class="styled-section">
         <div class="section-inner">
           <div class="curve left"></div>
