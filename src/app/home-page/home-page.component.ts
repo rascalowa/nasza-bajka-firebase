@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Observable, Subject, takeUntil, tap } from 'rxjs';
 import { LAYOUT_ENUM } from '../constans/layout.constans';
 import { DBService } from '../service/db.service';
@@ -18,12 +18,13 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   screenSize$: Observable<LAYOUT_ENUM>;
   componentDestroyed$ = new Subject<void>();
-  screen = LAYOUT_ENUM.MEDIUM;
+  screen: LAYOUT_ENUM;
 
   constructor(
     private dbService: DBService,
     private readonly loaderService: LoaderService,
-    private layoutService: LayoutService
+    private layoutService: LayoutService,
+    private readonly cdr: ChangeDetectorRef
   ) {
     this.screenSize$ = this.layoutService.size$.asObservable();
   }
@@ -66,6 +67,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
         takeUntil(this.componentDestroyed$),
         tap(data => {
           this.screen = data;
+          this.cdr.detectChanges();
         })
       )
       .subscribe()
