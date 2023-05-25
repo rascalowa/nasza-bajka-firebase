@@ -1,0 +1,57 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<form [formGroup]="postCreateForm" (submit)="onSavePost(postCreateForm.value)" *ngIf="!isLoading">
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      formControlName="name"
+      placeholder="Name"
+    />
+    <mat-error *ngIf="postCreateForm.get('name').invalid"
+      >Please enter a name.</mat-error
+    >
+  </mat-form-field>
+  <div class="image-block" *ngIf="mode === 'create' || photoChange">
+    <button mat-stroked-button type="button" color="primary" (click)="filePicker.click()">
+      Pick Image
+    </button>
+    <button *ngIf="photoChange" mat-stroked-button type="button" color="warn" (click)="togglePhotoChange()">
+      No, leave old image
+    </button>
+    <input
+      type="file"
+      #filePicker formControlName="image" (change)="onImagePicked($event)"
+      accept="*.png.jpg"
+    />
+  </div>
+  <div class="image-block" *ngIf="mode === 'edit' && !photoChange">
+    <button mat-stroked-button type="button" (click)="togglePhotoChange()">
+      I want to change image as well
+    </button>
+  </div>
+  <div class="image-preview">
+    <img
+      *ngIf="
+        imagePreview !== '' && imagePreview && postCreateForm.get('image').valid"
+      [src]="imagePreview"
+      [alt]="postCreateForm.value.name"
+    />
+  </div>
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      formControlName="owner"
+      placeholder="Owner"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      formControlName="since"
+      placeholder="Since"
+    />
+  </mat-form-field>
+  <button mat-raised-button color="accent" [disabled]="postCreateForm.invalid && photoChange" type="submit">Save Post</button>
+</form>

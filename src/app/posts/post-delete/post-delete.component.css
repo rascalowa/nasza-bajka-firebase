@@ -1,0 +1,35 @@
+mat-spinner {
+  margin: auto;
+}
+
+mat-card-header {
+  justify-content: center;
+}
+
+.add-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.horses-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:center
+}
+
+.example-card {
+  max-width: 300px;
+  margin: 15px;
+}
+
+.mat-card-image {
+  object-fit: cover;
+  width: 300px;
+  max-height: 400px;
+}
+
+.mat-card-content p {
+  margin-block-start: 0.5rem;
+  margin-block-end: 0.5rem;
+}

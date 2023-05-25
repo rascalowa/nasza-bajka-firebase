@@ -77,3 +77,8 @@ body {
   background-color: rgb(226, 231, 165);
   transform: translate(5%, 50%);
 }
+
+app-post-create {
+  max-width: 800px;
+  width: 100%;
+}

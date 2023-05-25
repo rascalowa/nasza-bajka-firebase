@@ -56,7 +56,6 @@ export class ContactComponent implements OnInit, OnDestroy {
       )
       .subscribe()
   }
-
   onSubmit(form) {
     this.loaderService.setLoading(true);
     this.contactService.sendMessage(form)
