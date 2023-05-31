@@ -1,14 +1,35 @@
-button {
-  margin-top: 2rem;
-  color: #fff;
-  background-color: #837d1f;
+.main-content-inner {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
 }
 
-.auth-container {
+.auth-main-container {
+  width: 60%;
   display: flex;
+  margin: 0 auto;
   flex-direction: column;
 }
 
+button {
+  margin: 2rem auto 1rem;
+  width: 50%;
+  background-color: #837d1f;
+}
+
+.auth-form-container {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.text-block {
+  display: block;
+  margin: 10px auto;
+
+}
+
 .auth-buttons button {
-  margin: 10px;
+  display: block;
+  margin: 1rem auto;
 }

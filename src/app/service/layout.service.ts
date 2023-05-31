@@ -7,7 +7,7 @@ import { LAYOUT_ENUM } from '../constans/layout.constans';
   providedIn: 'root'
 })
 export class LayoutService {
-  size$ = new BehaviorSubject<LAYOUT_ENUM>(LAYOUT_ENUM.SMALL);
+  size$ = new BehaviorSubject<LAYOUT_ENUM>(LAYOUT_ENUM.MEDIUM);
 
   displayMap = new Map([
     [Breakpoints.XSmall, LAYOUT_ENUM.XSMALL],

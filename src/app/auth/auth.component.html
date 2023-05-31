@@ -1,59 +1,70 @@
-<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="main-container">
+  <picture class="home-container">
+    <img [src]="mainPhoto" class="main-photo" alt="stable-background">
+  </picture>
 
-<picture class="home-container">
-  <img [src]="mainPhoto" class="main-photo" alt="stable-background">
-</picture>
-
-<div class="main-content-outer" *ngIf="!isLoggedIn">
-  <div class="main-content-inner">
-  <h3>Nasza Bajka admin panel</h3>
-  <form [formGroup]="loginForm" (submit)="onLogin(loginForm.value)" *ngIf="!isLoading">
-    <div class="auth-container">
-      <mat-form-field>
-        <input
-          matInput
-          type="text"
-          formControlName="email"
-          placeholder="Login"
-          required
-          email
-        />
-        <mat-error *ngIf="loginForm.get('email').invalid">Your login must be a valid email address.</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          matInput
-          type="password"
-          formControlName="password"
-          placeholder="Password"
-          minLength="6"
-          required
-        />
-        <mat-error *ngIf="loginForm.get('password').invalid">Please type your password. Minimum length is 6 characters.</mat-error>
-      </mat-form-field>
-      <button mat-raised-button [disabled]="loginForm.invalid" type="submit">Login</button>
+  <div class="main-content-outer" *ngIf="!isLoggedIn">
+    <div class="main-content-inner">
+      <div class="auth-main-container">
+        <h3>Admin Panel</h3>
+        <form [formGroup]="loginForm" (submit)="onLogin(loginForm.value)" *ngIf="!isLoading">
+          <div class="auth-form-container">
+            <mat-form-field>
+              <input
+                matInput
+                type="text"
+                formControlName="email"
+                placeholder="Login"
+                required
+                email
+              />
+              <mat-error *ngIf="loginForm.get('email').invalid">Your login must be a valid email address.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                type="password"
+                formControlName="password"
+                placeholder="Password"
+                minLength="6"
+                required
+              />
+              <mat-error *ngIf="loginForm.get('password').invalid">Please type your password. Minimum length is 6 characters.</mat-error>
+            </mat-form-field>
+            <button mat-raised-button [disabled]="loginForm.invalid" type="submit">Login</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </form>
   </div>
-</div>
 
-<div class="main-content-outer" *ngIf="isLoggedIn && !showConfirmationDialog">
-  <div class="main-content-inner confirmation-container">
-    <h5>Hey Karina, you are logged In:)</h5>
-    <div>
-      <p>If you want to edit list of your animals, you can click button below:  </p>
-      <button mat-button routerLink="/animals" routerLinkActive="mat-accent">Horse List</button>
+  <div class="main-content-outer" *ngIf="isLoggedIn && !showConfirmationDialog">
+    <div class="main-content-inner confirmation-container">
+      <div class="auth-main-container">
+        <div class="text-block">
+          <h4>Hey Karina, you are logged in :)</h4>
+          <p>If you want to edit list of your animals, you can click button below:</p>
+          <div class="auth-buttons">
+            <button mat-button routerLink="/animals" routerLinkActive="mat-accent">
+                List of Horses
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
-</div>
 
-<div class="main-content-outer" *ngIf="isLoggedIn && showConfirmationDialog">
-  <div class="main-content-inner confirmation-container">
-    <h5>Would you like to log out?</h5>
-    <div class="auth-buttons">
-      <button mat-button color="secondary" (click)="onDontLogout()">No</button>
-      <button mat-button color="primary" (click)="onConfirmLogOut()">Yes, please</button>
+  <div class="main-content-outer" *ngIf="isLoggedIn && showConfirmationDialog">
+    <div class="main-content-inner confirmation-container">
+      <div class="auth-main-container">
+        <div class="text-block">
+          <h4>Would you like to log out?</h4>
+        </div>
+        <div class="auth-buttons">
+        <button mat-button color="secondary" (click)="onDontLogout()">No</button>
+        <button mat-button color="primary" (click)="onConfirmLogOut()">Yes, please</button>
+      </div>
+      </div>
     </div>
   </div>
 </div>
